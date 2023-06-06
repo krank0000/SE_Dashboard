@@ -1,0 +1,39 @@
+.calendar {
+    width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+.month {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.weekdays div {
+    width: 40px;
+    text-align: center;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days div {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+}
+
+.event {
+    background-color: yellow;
+    font-weight: bold;
+}
