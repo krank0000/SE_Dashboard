@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>圓餅圖示例</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="card mb-3">
+    <div class="card-body p-3">
+      <div class="chart">
+        <canvas id="pie-chart" class="chart-canvas" height="300px"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 資料示例
+    const data = {
+      labels: ['A', 'B', 'C', 'D', 'E'],
+      datasets: [{
+        data: [10, 20, 30, 15, 25],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+      }]
+    };
+
+    // 圓餅圖配置
+    const options = {
+      responsive: true
+    };
+
+    // 繪製圓餅圖
+    const ctx = document.getElementById('pie-chart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+    });
+  </script>
+</body>
+</html>
