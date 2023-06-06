@@ -1,39 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>圓餅圖示例</title>
+  <title>圖表示例</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="card mb-3">
-    <div class="card-body p-3">
-      <div class="chart">
-        <canvas id="pie-chart" class="chart-canvas" height="300px"></canvas>
-      </div>
-    </div>
+  <div class="chart-container" style="position: relative; height:500px; width:800px">
+    <canvas id="bar-line-chart"></canvas>
+  </div>
+
+  <div class="chart-container" style="position: relative; height:500px; width:800px">
+    <canvas id="doughnut-chart-1"></canvas>
+  </div>
+
+  <div class="chart-container" style="position: relative; height:500px; width:800px">
+    <canvas id="doughnut-chart-2"></canvas>
+  </div>
+
+  <div class="chart-container" style="position: relative; height:500px; width:800px">
+    <canvas id="doughnut-chart-3"></canvas>
   </div>
 
   <script>
-    // 資料示例
-    const data = {
-      labels: ['A', 'B', 'C', 'D', 'E'],
+    // 長條圖 + 折線圖資料示例
+    const barLineChartData = {
+      labels: ['階段1', '階段2', '階段3', '階段4'],
+      datasets: [
+        {
+          type: 'bar',
+          label: '男性',
+          backgroundColor: '#36A2EB',
+          data: [10, 20, 15, 25]
+        },
+        {
+          type: 'bar',
+          label: '女性',
+          backgroundColor: '#FF6384',
+          data: [15, 18, 12, 20]
+        },
+        {
+          type: 'line',
+          label: '總人數',
+          borderColor: '#FFCE56',
+          fill: false,
+          data: [25, 38, 27, 45]
+        }
+      ]
+    };
+
+    // 長條圖 + 折線圖配置
+    const barLineChartOptions = {
+      responsive: true,
+      scales: {
+        x: {
+          stacked: false
+        },
+        y: {
+          beginAtZero: true
+        }
+      },
+      animation: {
+        duration: 2000
+      }
+    };
+
+    // 繪製長條圖 + 折線圖
+    const barLineCtx = document.getElementById('bar-line-chart').getContext('2d');
+    new Chart(barLineCtx, {
+      type: 'bar',
+      data: barLineChartData,
+      options: barLineChartOptions
+    });
+
+    // 圓環圖資料示例
+    const doughnutChartData1 = {
+      labels: ['資料1', '資料2', '資料3'],
       datasets: [{
-        data: [10, 20, 30, 15, 25],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+        data: [30, 25, 45],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
       }]
     };
 
-    // 圓餅圖配置
-    const options = {
+    const doughnutChartData2 = {
+      labels: ['資料A', '資料B', '資料C'],
+      datasets: [{
+        data: [20, 35, 45],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+      }]
+    };
+
+    const doughnutChartData3 = {
+      labels: ['資料X', '資料Y', '資料Z'],
+      datasets: [{
+        data: [15, 40, 45],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+      }]
+    };
+
+    // 圓環圖配置
+    const doughnutChartOptions = {
       responsive: true
     };
 
-    // 繪製圓餅圖
-    const ctx = document.getElementById('pie-chart').getContext('2d');
-    new Chart(ctx, {
-      type: 'pie',
-      data: data,
-      options: options
+    // 繪製圓環圖1
+    const doughnutChart1 = document.getElementById('doughnut-chart-1').getContext('2d');
+    new Chart(doughnutChart1, {
+      type: 'doughnut',
+      data: doughnutChartData1,
+      options: doughnutChartOptions
+    });
+
+    // 繪製圓環圖2
+    const doughnutChart2 = document.getElementById('doughnut-chart-2').getContext('2d');
+    new Chart(doughnutChart2, {
+      type: 'doughnut',
+      data: doughnutChartData2,
+      options: doughnutChartOptions
+    });
+
+    // 繪製圓環圖3
+    const doughnutChart3 = document.getElementById('doughnut-chart-3').getContext('2d');
+    new Chart(doughnutChart3, {
+      type: 'doughnut',
+      data: doughnutChartData3,
+      options: doughnutChartOptions
     });
   </script>
 </body>
